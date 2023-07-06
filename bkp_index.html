@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Slider com pontos de navegação</title>
+  <style>
+    .slider-container-custom-2 {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.06);
+      border-radius: 6px;
+    }
+
+    .slider-custom-2 {
+      width: 100%;
+      height: 100%;
+    }
+
+    .slider-custom-2 img {
+      width: 100%;
+    }
+
+    .slider-navigation-custom-2 {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .slider-navigation-custom-2 span {
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background-color: #bbb;
+      margin: 0 5px;
+      cursor: pointer;
+    }
+
+    .slider-navigation-custom-2 span.swiper-pagination-bullet-active {
+      background-color: #F6681F;
+    }
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+</head>
+<body>
+  <div class="slider-container-custom-2">
+    <div class="swiper-container slider-custom-2">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src="https://biazam.com.br/wp-content/uploads/2023/06/Metros-vendidos-mobile.png" alt="Imagem 1" width="315" height="98">
+        </div>
+        <div class="swiper-slide">
+          <img src="https://biazam.com.br/wp-content/uploads/2023/06/anos-de-mercado-mobile.png" alt="Imagem 2" width="315" height="98">
+        </div>
+        <div class="swiper-slide">
+          <img src="https://biazam.com.br/wp-content/uploads/2023/06/clientes-atendidos-mobile.png" width="315" height="98">
+        </div>
+        <div class="swiper-slide">
+          <img src="https://biazam.com.br/wp-content/uploads/2023/06/Modelos-de-produtos-mobile.png" alt="Imagem 4" width="315" height="98">
+        </div>
+      </div>
+      <div class="swiper-pagination slider-navigation-custom-2"></div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const swiper = new Swiper(".slider-custom-2", {
+        slidesPerView: 1,
+        spaceBetween: 0,
+        loop: true,
+        pagination: {
+          el: ".slider-navigation-custom-2",
+          clickable: true,
+        },
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+        },
+        on: {
+          init: function() {
+            const activeDot = document.querySelector(".slider-navigation-custom-2 .swiper-pagination-bullet-active");
+            activeDot.style.backgroundColor = "#F6681F";
+          },
+          slideChange: function() {
+            const activeDot = document.querySelector(".slider-navigation-custom-2 .swiper-pagination-bullet-active");
+            const dots = document.querySelectorAll(".slider-navigation-custom-2 .swiper-pagination-bullet");
+            dots.forEach(function(dot) {
+              dot.style.backgroundColor = "#bbb";
+            });
+            activeDot.style.backgroundColor = "#F6681F";
+          },
+        },
+      });
+    });
+  </script>
+</body>
+</html>

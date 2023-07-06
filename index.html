@@ -24,22 +24,10 @@
     }
     .image-wrapper.selected {
       opacity: 1;
-   
 
     }
     .image-wrapper:hover {
       opacity: 1;
-    }
-    .rounded-image {
-      width: 138px !important;
-      height: 138px;
-      border-radius: 50%;
-      border: 2px solid transparent;
-      background-color: #eeeeee;
-    }
-    .rounded-image.clicked {
-      border-color: #F6681F
-;
     }
     .details-wrapper {
       width: 90%;
@@ -60,29 +48,7 @@
       font-weight: bold;
       font-family: 'Heebo', sans-serif;
     }
-    .details-description {
-      margin-top: -10px;
-      margin-left: 0px ;
-      margin-rigth: 150px;
-      font-family: 'Heebo', sans-serif;
-      
-    }
-    .details-button {
-      padding: 10px 20px;
-      background-color: #F6681F;
-      color: white;
-      font-family: 'Heebo', sans-serif;
-      font-style: normal;
-      font-weight: 700;
-      font-size: 16px;
-      line-height: 24px;
-      border-radius: 5px;
-      widht: 150px !important;
-      margin-right: 200px;
-      display: inline-block;
-      text-align: center;
-      text-decoration: none;
-    }
+  
     .owl-dots {
       display: flex;
       justify-content: center;
@@ -108,9 +74,10 @@
 <body>
   <div class="slider-wrapper">
     <div class="slider owl-carousel">
-      <div class="image-wrapper selected" onclick="showDetails('https://biazam.com.br/wp-content/uploads/2023/05/Frame-4dfdf.png', 'Bobinas Chapas e Parafusos', 'https://biazam.com.br/categoria-produto/telhas-metalicas/')">
-        <img src="http://novo.local/wp-content/uploads/2023/05/2_Telhas_metalicas.png" alt="Imagem 1" class="rounded-image clicked">
-        <p class="image-caption">Telhas Metálicas</p>
+      <div class="image-wrapper">
+        <a href="https://biazam.com.br/categoria-produto/telhas-metalicas/" class="icon-naveg">
+          <img src="https://biazam.com.br/wp-content/uploads/2023/05/Frame-4dfdf.png" width="100" height="100" alt="Imagem 1" class="rounded-image clicked">
+        </a>
       </div>
       <div class="image-wrapper" onclick="showDetails('http://novo.local/wp-content/uploads/2023/05/Bobinas.png', 'Título da Imagem 2', 'Descrição da Imagem 2', 'link2')">
         <img src="http://novo.local/wp-content/uploads/2023/05/3_Telhas_com_isolamento.png" alt="Imagem 2" class="rounded-image">
@@ -137,13 +104,6 @@ Multidobras</p>
     </div>
   </div>
 
-  <div class="details-wrapper">
-    <img src="http://novo.local/wp-content/uploads/2023/05/Bobinas.png" alt="Imagem Detalhada" class="details-image">
-    <p class="details-title">Bobinas Chapas e Parafusos</p>
-    <a href="#" class="details-button">Conheça</a>
-    <div class="owl-dots"></div>
-  </div>
-
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
   <script>
@@ -166,28 +126,6 @@ Multidobras</p>
         }
       }
     });
-
-    function showDetails(imageSrc, title, link) {
-      const detailsImage = document.querySelector('.details-image');
-      const detailsTitle = document.querySelector('.details-title');
-      const detailsButton = document.querySelector('.details-button');
-
-      detailsImage.src = imageSrc;
-      detailsTitle.textContent = title;
-      detailsButton.href = link;
-
-      const imageWrappers = document.querySelectorAll('.image-wrapper');
-      imageWrappers.forEach(wrapper => {
-        const image = wrapper.querySelector('.rounded-image');
-        wrapper.classList.remove('selected');
-        image.classList.remove('clicked');
-      });
-
-      const selectedImageWrapper = event.currentTarget;
-      const selectedImage = selectedImageWrapper.querySelector('.rounded-image');
-      selectedImageWrapper.classList.add('selected');
-      selectedImage.classList.add('clicked');
-    }
   </script>
 </body>
 </html>
